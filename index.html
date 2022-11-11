@@ -12,31 +12,60 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="assets/style/main.css">
   <link rel="stylesheet" href="assets/style/style.css">
-  <title>checkpoint-week-3</title>
+  <title>Jot</title>
 </head>
 
 <body>
   <header>
-    <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select">
+    <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select justify-content-between">
       <a class="navbar-brand ms-3" href="#">
         <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
           loading="lazy">
-        <span class="ms-2">checkpoint-week-3</span>
+        <span class="ms-2">Jot</span>
       </a>
+      <div class="col-5 d-flex justify-content-end align-items-center p-3">
+        <h4 id="noteCount" class="mx-4 text-center">Note Count: 0</h4>
+        <form class=" d-flex align-items-center" onsubmit="app.notesController.addNote()">
+          <input required type="text" id="title" name="title" placeholder="Note Title" minlength="3" maxlength="15">
+          <input class="mx-4" required type="color" id="color" name="color" placeholder="Color" value="#000000">
+          <button class="btn btn-primary fs-5">
+            <i class="mdi mdi-plus"></i>
+            <i class="mdi mdi-book"></i>
+          </button>
+        </form>
+      </div>
     </nav>
   </header>
-  <main>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div id="app"></div>
-        </div>
-      </div>
-    </div>
+  <main class="bg-dark">
+    <!-- SECTION small text area template -->
+    <section id="title-area" class="row text-light mx-4 p-3">
+      <!-- <div class="col-1">
+        <span class="selectable" onclick="app.notesController.selectNote()">hello there</span>
+      </div> -->
+    </section>
+    <!--  -->
+    <section id="active-template" class="row container-fluid justify-content-center">
+      <!-- SECTION active template -->
+      <!-- <div class="col-md-8 col-12 border">
+          <section class="row">
+            <div class="col-4 text-light p-5">
+              <h3>Note Name:</h3><br>
+              <h6>Created:</h6><br>
+              <h6>Updated:</h6><br>
+              <h6>Words: 0</h6><br>
+              <h6>Characters: 0</h6><br>
+            </div>
+            <div class="col-md-8 col-12 p-4">
+              <textarea name="note-area" id="note-area" cols="70" rows="20"></textarea>
+            </div>
+          </section>
+        </div> -->
+      <!--  -->
+    </section>
   </main>
   <footer class="bg-dark text-light">
     <div class="text-center no-select">
-      <p><small>Made with 💖 by CodeWorks</small></p>
+      <p><small></small></p>
     </div>
   </footer>
 

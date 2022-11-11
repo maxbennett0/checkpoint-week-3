@@ -1,1 +1,6 @@
 /* BASIC STYLES HERE */
+
+.thicc-border {
+  border: 5px solid white;
+  border-radius: 5px;
+}
