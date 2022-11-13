@@ -7,9 +7,12 @@ let noteCount = 0
 class NotesService {
 
   drawNoteCount() {
-    console.log('drawing note count');
+    if (noteCount >= 0) {
+      setText('noteCount', 'Note Count: ' + noteCount.toString())
+    }
   }
   deleteNote(id) {
+    noteCount--
     let filteredArr = appState.notes.filter(n => n.id != id)
     appState.notes = filteredArr
     saveState('notes', filteredArr)
@@ -22,6 +25,7 @@ class NotesService {
   }
 
   addNote(noteData) {
+    noteCount++
     console.log('note data', noteData);
     const newNote = new Note(noteData)
     appState.notes = [...appState.notes, newNote]

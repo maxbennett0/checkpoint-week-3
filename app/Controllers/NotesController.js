@@ -1,7 +1,9 @@
 import { appState } from "../AppState.js";
 import { notesService } from "../Services/NotesService.js";
 import { getFormData } from "../Utils/FormHandler.js";
-import { setHTML } from "../Utils/Writer.js";
+import { Pop } from "../Utils/Pop.js";
+import { setHTML, setText } from "../Utils/Writer.js";
+
 
 function _drawActive() {
   let activeNote = appState.activeNote
@@ -20,6 +22,10 @@ function _drawTitle() {
 
 function _drawNoteCount() {
   notesService.drawNoteCount()
+}
+
+function _drawTime() {
+  let date = new Date()
 }
 
 export class NotesController {
@@ -48,8 +54,11 @@ export class NotesController {
     notesService.saveNote(newNote.value)
   }
 
-  deleteNote(id) {
-    notesService.deleteNote(id)
-    _drawActive()
+  async deleteNote(id) {
+    if (await Pop.confirm('u sure dawg?')) {
+      notesService.deleteNote(id)
+      _drawActive()
+      _drawNoteCount()
+    }
   }
 }

@@ -6,6 +6,7 @@ export class Note {
     this.title = data.title
     this.note = data.note || ''
     this.color = data.color
+    this.date = data.date ? new Date(data.date) : new Date()
   }
 
   get ActiveTemplate() {
@@ -14,8 +15,8 @@ export class Note {
       <section class="row">
         <div class="col-4 text-light p-5">
           <h3>${this.title}</h3><br>
-          <h6>Created:</h6><br>
-          <h6>Updated:</h6><br>
+          <h6>Created: ${this.ComputeDate}</h6><br>
+          <h6>Updated: ${this.ComputeFullDate}</h6><br>
           <h6>Words: 0</h6><br>
           <h6>Characters: 0</h6><br>
         </div>
@@ -37,5 +38,15 @@ export class Note {
         <span>${this.title}</span>
       </div>
     `
+  }
+
+  get ComputeDate() {
+    let date = this.date
+    return this.date.toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })
+  }
+
+  get ComputeFullDate() {
+    let date = this.date
+    return date.toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" }) + ', at: ' + ((date.getHours() - 12) + ':' + date.getMinutes())
   }
 }
